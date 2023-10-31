@@ -2,7 +2,6 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 
 module.exports = (env, argv) => {
@@ -28,7 +27,6 @@ module.exports = (env, argv) => {
       new MiniCssExtractPlugin({
         filename: filename('css'),
       }),
-      new CleanWebpackPlugin(),
     ]
 
     if (isDev) {
@@ -41,11 +39,12 @@ module.exports = (env, argv) => {
   return {
     context: path.resolve(__dirname, 'src'),
     entry: {
-      main: ['@babel/polyfill', './index.js'],
+      main: ['core-js/stable', 'regenerator-runtime/runtime', './index.js'],
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: filename('js'),
+      clean: true,
     },
     devtool: isDev ? 'source-map' : false,
     devServer: {
