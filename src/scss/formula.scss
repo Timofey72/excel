@@ -1,0 +1,34 @@
+@import 'variables';
+@import 'mixins';
+
+.excel__formula {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: $header-height + $toolbal-height;
+  height: $formula-height;
+
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba($border-color, 0.2);
+
+  .formula-info {
+    font-size: 18px;
+    text-align: center;
+    font-style: italic;
+    border-right: 1px solid rgba($border-color, 0.2);
+    min-width: $info-cell-width;
+    font-weight: 600;
+    color: $border-color;
+  }
+
+  .formula-input {
+    padding: 7px;
+    font-size: 12px;
+    overflow: hidden;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    color: $border-color;
+  }
+}
